@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Login | Land Governance</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- NAVIGATION BAR -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            Land Governance
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="research.html">Research</a></li>
+            <li><a href="policy.html">Policy</a></li>
+            <li><a href="feedback.html">Feedback</a></li>
+            <li><a href="login.html">Admin</a></li>
+        </ul>
+
+    </nav>
+
+
+    <!-- LOGIN SECTION -->
+
+    <section class="login-section">
+
+        <div class="login-container">
+
+            <div class="login-icon">
+                🔐
+            </div>
+
+            <h1>Admin Login</h1>
+
+            <p class="login-description">
+                Login to access the Land Governance Admin Dashboard.
+            </p>
+
+
+            <form id="loginForm">
+
+                <div class="login-field">
+
+                    <label for="username">
+                        Username
+                    </label>
+
+                    <input
+                        type="text"
+                        id="username"
+                        placeholder="Enter username"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="login-field">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter password"
+                        required
+                    >
+
+                </div>
+
+
+                <button type="submit" class="login-btn">
+                    Login
+                </button>
+
+
+                <p id="loginMessage" class="login-message"></p>
+
+            </form>
+
+
+            <a href="index.html" class="back-home">
+                ← Back to Home
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+
+        <p>
+            © 2026 National Digital Platform for Land Governance
+        </p>
+
+    </footer>
+
+
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>

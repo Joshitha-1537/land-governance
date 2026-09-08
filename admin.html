@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard | Land Governance</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- ============================= -->
+    <!-- LOGIN PROTECTION -->
+    <!-- ============================= -->
+
+    <script>
+        if (sessionStorage.getItem("adminLoggedIn") !== "true") {
+            window.location.href = "login.html";
+        }
+    </script>
+
+
+    <!-- ============================= -->
+    <!-- NAVIGATION BAR -->
+    <!-- ============================= -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            Land Governance
+        </div>
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="dashboard.html">Dashboard</a>
+            </li>
+
+            <li>
+                <a href="research.html">Research</a>
+            </li>
+
+            <li>
+                <a href="policy.html">Policy</a>
+            </li>
+
+            <li>
+                <a href="feedback.html">Feedback</a>
+            </li>
+
+            <li>
+                <a href="admin.html">Admin</a>
+            </li>
+
+            <li>
+                <a href="#" id="logoutBtn">Logout</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- ============================= -->
+    <!-- ADMIN HEADER -->
+    <!-- ============================= -->
+
+    <section class="admin-header">
+
+        <div class="admin-header-content">
+
+            <h1>Admin Dashboard</h1>
+
+            <p>
+                Manage stakeholder feedback and review platform insights.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ============================= -->
+    <!-- ADMIN CONTENT -->
+    <!-- ============================= -->
+
+    <section class="admin-section">
+
+        <div class="admin-container">
+
+
+            <!-- ============================= -->
+            <!-- STATISTICS -->
+            <!-- ============================= -->
+
+            <div class="admin-stats">
+
+                <div class="admin-stat-card">
+
+                    <h3>Total Feedback</h3>
+
+                    <p id="totalFeedback">
+                        0
+                    </p>
+
+                </div>
+
+
+                <div class="admin-stat-card">
+
+                    <h3>Policy Suggestions</h3>
+
+                    <p id="policyFeedback">
+                        0
+                    </p>
+
+                </div>
+
+
+                <div class="admin-stat-card">
+
+                    <h3>Research / Data</h3>
+
+                    <p id="researchFeedback">
+                        0
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- ============================= -->
+            <!-- FEEDBACK FILTER -->
+            <!-- ============================= -->
+
+            <div class="admin-filter">
+
+                <label for="categoryFilter">
+                    Filter Feedback:
+                </label>
+
+                <select id="categoryFilter">
+
+                    <option value="all">
+                        All Categories
+                    </option>
+
+                    <option value="land-use">
+                        Land Use
+                    </option>
+
+                    <option value="policy">
+                        Policy Suggestion
+                    </option>
+
+                    <option value="data-research">
+                        Data / Research
+                    </option>
+
+                    <option value="environment">
+                        Environment
+                    </option>
+
+                    <option value="other">
+                        Other
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- ============================= -->
+            <!-- FEEDBACK TITLE -->
+            <!-- ============================= -->
+
+            <h2 class="admin-feedback-title">
+                Submitted Feedback
+            </h2>
+
+
+            <p id="noFeedback">
+                No feedback submitted yet.
+            </p>
+
+
+            <!-- ============================= -->
+            <!-- FEEDBACK LIST -->
+            <!-- ============================= -->
+
+            <div id="feedbackList"></div>
+
+
+            <!-- ============================= -->
+            <!-- CLEAR FEEDBACK -->
+            <!-- ============================= -->
+
+            <button
+                id="clearFeedbackBtn"
+                class="clear-feedback-btn"
+                type="button"
+            >
+                Clear All Feedback
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ============================= -->
+    <!-- FOOTER -->
+    <!-- ============================= -->
+
+    <footer class="footer">
+
+        <p>
+            © 2026 National Digital Platform for Land Governance
+        </p>
+
+    </footer>
+
+
+    <!-- ============================= -->
+    <!-- LOGOUT SCRIPT -->
+    <!-- ============================= -->
+
+    <script>
+
+        const logoutBtn = document.getElementById("logoutBtn");
+
+        if (logoutBtn) {
+
+            logoutBtn.addEventListener("click", function(event) {
+
+                event.preventDefault();
+
+                sessionStorage.removeItem("adminLoggedIn");
+
+                window.location.href = "login.html";
+
+            });
+
+        }
+
+    </script>
+
+
+    <!-- ============================= -->
+    <!-- ADMIN DASHBOARD SCRIPT -->
+    <!-- ============================= -->
+
+    <script>
+
+        const feedbackListContainer =
+            document.getElementById("feedbackList");
+
+        const noFeedback =
+            document.getElementById("noFeedback");
+
+        const totalFeedback =
+            document.getElementById("totalFeedback");
+
+        const policyFeedback =
+            document.getElementById("policyFeedback");
+
+        const researchFeedback =
+            document.getElementById("researchFeedback");
+
+        const categoryFilter =
+            document.getElementById("categoryFilter");
+
+        const clearFeedbackBtn =
+            document.getElementById("clearFeedbackBtn");
+
+
+        let feedbackList =
+            JSON.parse(localStorage.getItem("feedbackList")) || [];
+
+
+        /* ============================= */
+        /* DISPLAY FEEDBACK */
+        /* ============================= */
+
+        function displayFeedback() {
+
+            feedbackListContainer.innerHTML = "";
+
+            const selectedCategory =
+                categoryFilter.value;
+
+
+            const filteredFeedback =
+                selectedCategory === "all"
+                    ? feedbackList
+                    : feedbackList.filter(function(feedback) {
+                        return feedback.category === selectedCategory;
+                    });
+
+
+            /* No feedback */
+
+            if (filteredFeedback.length === 0) {
+
+                noFeedback.style.display = "block";
+
+            } else {
+
+                noFeedback.style.display = "none";
+
+            }
+
+
+            /* Create feedback cards */
+
+            filteredFeedback.forEach(function(feedback) {
+
+                const card =
+                    document.createElement("div");
+
+                card.className =
+                    "admin-feedback-card";
+
+
+                const title =
+                    document.createElement("h3");
+
+                title.textContent =
+                    feedback.category;
+
+                card.appendChild(title);
+
+
+                const name =
+                    document.createElement("p");
+
+                name.innerHTML =
+                    "<strong>Name:</strong> ";
+
+                name.appendChild(
+                    document.createTextNode(feedback.name)
+                );
+
+                card.appendChild(name);
+
+
+                const email =
+                    document.createElement("p");
+
+                email.innerHTML =
+                    "<strong>Email:</strong> ";
+
+                email.appendChild(
+                    document.createTextNode(feedback.email)
+                );
+
+                card.appendChild(email);
+
+
+                const location =
+                    document.createElement("p");
+
+                location.innerHTML =
+                    "<strong>Location:</strong> ";
+
+                location.appendChild(
+                    document.createTextNode(feedback.location)
+                );
+
+                card.appendChild(location);
+
+
+                const message =
+                    document.createElement("p");
+
+                message.innerHTML =
+                    "<strong>Message:</strong> ";
+
+                message.appendChild(
+                    document.createTextNode(feedback.message)
+                );
+
+                card.appendChild(message);
+
+
+                const date =
+                    document.createElement("p");
+
+                date.innerHTML =
+                    "<strong>Date:</strong> ";
+
+                date.appendChild(
+                    document.createTextNode(feedback.date)
+                );
+
+                card.appendChild(date);
+
+
+                feedbackListContainer.appendChild(card);
+
+            });
+
+        }
+
+
+        /* ============================= */
+        /* UPDATE STATISTICS */
+        /* ============================= */
+
+        function updateStatistics() {
+
+            totalFeedback.textContent =
+                feedbackList.length;
+
+
+            const policyCount =
+                feedbackList.filter(function(feedback) {
+
+                    return feedback.category === "policy";
+
+                }).length;
+
+
+            const researchCount =
+                feedbackList.filter(function(feedback) {
+
+                    return feedback.category === "data-research";
+
+                }).length;
+
+
+            policyFeedback.textContent =
+                policyCount;
+
+            researchFeedback.textContent =
+                researchCount;
+
+        }
+
+
+        /* ============================= */
+        /* FILTER */
+        /* ============================= */
+
+        categoryFilter.addEventListener(
+            "change",
+            function() {
+
+                displayFeedback();
+
+            }
+        );
+
+
+        /* ============================= */
+        /* CLEAR ALL FEEDBACK */
+        /* ============================= */
+
+        clearFeedbackBtn.addEventListener(
+            "click",
+            function() {
+
+                if (feedbackList.length === 0) {
+
+                    alert("There is no feedback to clear.");
+
+                    return;
+
+                }
+
+
+                const confirmClear =
+                    confirm(
+                        "Are you sure you want to clear all feedback?"
+                    );
+
+
+                if (confirmClear) {
+
+                    localStorage.removeItem("feedbackList");
+
+                    feedbackList = [];
+
+                    updateStatistics();
+
+                    displayFeedback();
+
+                    alert("All feedback has been cleared.");
+
+                }
+
+            }
+        );
+
+
+        /* ============================= */
+        /* INITIAL LOAD */
+        /* ============================= */
+
+        updateStatistics();
+
+        displayFeedback();
+
+    </script>
+
+</body>
+
+</html>

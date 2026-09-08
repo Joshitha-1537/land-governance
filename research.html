@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Research Repository - LandGov India</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- Navigation Bar -->
+
+    <nav>
+
+        <div class="logo">
+            🌍 LandGov India
+        </div>
+
+
+        <div class="nav-links">
+
+            <a href="index.html">Home</a>
+
+            <a href="dashboard.html">Dashboard</a>
+
+            <a href="research.html">Research</a>
+
+            <a href="policy.html">Policy</a>
+
+            <a href="feedback.html">Feedback</a>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- Research Header -->
+
+    <section class="research-header">
+
+        <p class="small-title">
+            KNOWLEDGE & EVIDENCE
+        </p>
+
+        <h1>
+            Research Repository
+        </h1>
+
+        <p>
+            Explore research, reports and evidence related to
+            land governance, land use and policy innovation.
+        </p>
+
+    </section>
+
+
+
+    <!-- Search -->
+
+    <section class="research-search">
+
+        <h2>
+            Find Research & Evidence
+        </h2>
+
+        <p>
+            Search the knowledge repository by topic or keyword.
+        </p>
+
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="researchSearch"
+                placeholder="Search research topics..."
+            >
+
+            <button onclick="searchResearch()">
+                Search
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- Research Categories -->
+
+    <section class="research-section">
+
+        <div class="section-title">
+
+            <p class="small-title">
+                RESEARCH AREAS
+            </p>
+
+            <h2>
+                Explore Knowledge Areas
+            </h2>
+
+        </div>
+
+
+        <div class="research-grid">
+
+
+            <!-- Card 1 -->
+
+            <div class="research-card research-item">
+
+                <div class="research-icon">
+                    🌾
+                </div>
+
+                <h3>
+                    Agricultural Land
+                </h3>
+
+                <p>
+                    Research on agricultural land use,
+                    rural development and land productivity.
+                </p>
+
+                <button onclick="showResearch('Agricultural Land')">
+                    View Research
+                </button>
+
+            </div>
+
+
+
+            <!-- Card 2 -->
+
+            <div class="research-card research-item">
+
+                <div class="research-icon">
+                    🏙️
+                </div>
+
+                <h3>
+                    Urban Land
+                </h3>
+
+                <p>
+                    Studies related to urban expansion,
+                    planning and sustainable land use.
+                </p>
+
+                <button onclick="showResearch('Urban Land')">
+                    View Research
+                </button>
+
+            </div>
+
+
+
+            <!-- Card 3 -->
+
+            <div class="research-card research-item">
+
+                <div class="research-icon">
+                    🌳
+                </div>
+
+                <h3>
+                    Forest & Ecology
+                </h3>
+
+                <p>
+                    Research covering forests, biodiversity
+                    and ecological land management.
+                </p>
+
+                <button onclick="showResearch('Forest & Ecology')">
+                    View Research
+                </button>
+
+            </div>
+
+
+
+            <!-- Card 4 -->
+
+            <div class="research-card research-item">
+
+                <div class="research-icon">
+                    ⚖️
+                </div>
+
+                <h3>
+                    Land Policy
+                </h3>
+
+                <p>
+                    Evidence related to land policies,
+                    regulations and governance.
+                </p>
+
+                <button onclick="showResearch('Land Policy')">
+                    View Research
+                </button>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- Featured Evidence -->
+
+    <section class="evidence-section">
+
+        <div class="section-title">
+
+            <p class="small-title">
+                FEATURED EVIDENCE
+            </p>
+
+            <h2>
+                Knowledge for Better Decisions
+            </h2>
+
+        </div>
+
+
+        <div class="evidence-container">
+
+
+            <div class="evidence-card">
+
+                <span>
+                    📄
+                </span>
+
+                <div>
+
+                    <h3>
+                        Land Use Planning
+                    </h3>
+
+                    <p>
+                        Evidence and research supporting
+                        sustainable land-use planning.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="evidence-card">
+
+                <span>
+                    📊
+                </span>
+
+                <div>
+
+                    <h3>
+                        Spatial Data Research
+                    </h3>
+
+                    <p>
+                        Geographic and spatial approaches
+                        for understanding land patterns.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="evidence-card">
+
+                <span>
+                    💡
+                </span>
+
+                <div>
+
+                    <h3>
+                        Policy Innovation
+                    </h3>
+
+                    <p>
+                        Research insights that can support
+                        evidence-based policy development.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <p>
+            © 2026 LandGov India | Digital Land Governance Platform
+        </p>
+
+    </footer>
+
+
+
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>

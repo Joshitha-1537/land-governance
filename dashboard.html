@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Land Governance Dashboard</title>
+
+    <!-- Main CSS -->
+    <link rel="stylesheet"
+        href="css/style.css">
+
+    <!-- Leaflet Map CSS -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- ===============================
+         NAVIGATION BAR
+         =============================== -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            Land Governance
+        </div>
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="index.html">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="dashboard.html">
+                    Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="research.html">
+                    Research
+                </a>
+            </li>
+
+            <li>
+                <a href="policy.html">
+                    Policy
+                </a>
+            </li>
+
+            <li>
+                <a href="feedback.html">
+                    Feedback
+                </a>
+            </li>
+
+            <li>
+                <a href="admin.html">
+                    Admin
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- ===============================
+         DASHBOARD HEADER
+         =============================== -->
+
+    <section class="dashboard-header">
+
+        <div class="dashboard-header-content">
+
+            <h1>
+                Land Governance Dashboard
+            </h1>
+
+            <p>
+                Explore land-use information,
+                spatial data and evidence for
+                informed land governance.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===============================
+         DASHBOARD STAT CARDS
+         =============================== -->
+
+    <section class="dashboard-stats">
+
+        <div class="dashboard-card">
+
+            <h3>
+                🗺️ Land Mapping
+            </h3>
+
+            <p>
+                Explore spatial information
+                for land-use planning.
+            </p>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <h3>
+                🌾 Agricultural Land
+            </h3>
+
+            <p>
+                Understand agricultural land-use
+                and planning considerations.
+            </p>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <h3>
+                🏙️ Urban Land
+            </h3>
+
+            <p>
+                Explore urban growth and
+                sustainable land planning.
+            </p>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <h3>
+                🌳 Forest Land
+            </h3>
+
+            <p>
+                Support ecological conservation
+                and sustainable land management.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===============================
+         STATE SELECTION
+         =============================== -->
+
+    <section class="state-section">
+
+        <div class="state-container">
+
+            <h2>
+                Select a State
+            </h2>
+
+            <p>
+                Select a state to explore its
+                location on the map.
+            </p>
+
+            <select id="stateSelect">
+
+                <option value="">
+                    Select State
+                </option>
+
+                <option value="andhra">
+                    Andhra Pradesh
+                </option>
+
+                <option value="telangana">
+                    Telangana
+                </option>
+
+                <option value="karnataka">
+                    Karnataka
+                </option>
+
+                <option value="tamilnadu">
+                    Tamil Nadu
+                </option>
+
+                <option value="kerala">
+                    Kerala
+                </option>
+
+                <option value="maharashtra">
+                    Maharashtra
+                </option>
+
+            </select>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===============================
+         INTERACTIVE MAP
+         =============================== -->
+
+    <section class="map-section">
+
+        <div class="map-container">
+
+            <h2>
+                Interactive Land Governance Map
+            </h2>
+
+            <p>
+                Explore selected locations across India.
+            </p>
+
+            <div id="indiaMap"></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===============================
+         LAND GOVERNANCE INSIGHTS
+         =============================== -->
+
+    <section class="insights-section">
+
+        <div class="insights-container">
+
+            <h2>
+                Land Governance Insights
+            </h2>
+
+            <p class="insights-description">
+                Explore major land-use categories
+                supporting evidence-based land governance.
+            </p>
+
+
+            <div class="insights-grid">
+
+
+                <div class="insight-card">
+
+                    <div class="insight-icon">
+                        🌾
+                    </div>
+
+                    <h3>
+                        Agricultural Land
+                    </h3>
+
+                    <p>
+                        Supports agricultural planning,
+                        rural development and sustainable
+                        land management.
+                    </p>
+
+                </div>
+
+
+                <div class="insight-card">
+
+                    <div class="insight-icon">
+                        🌳
+                    </div>
+
+                    <h3>
+                        Forest Land
+                    </h3>
+
+                    <p>
+                        Supports forest conservation,
+                        biodiversity protection and
+                        ecological planning.
+                    </p>
+
+                </div>
+
+
+                <div class="insight-card">
+
+                    <div class="insight-icon">
+                        🏙️
+                    </div>
+
+                    <h3>
+                        Urban Land
+                    </h3>
+
+                    <p>
+                        Supports urban expansion,
+                        infrastructure planning and
+                        sustainable cities.
+                    </p>
+
+                </div>
+
+
+                <div class="insight-card">
+
+                    <div class="insight-icon">
+                        💧
+                    </div>
+
+                    <h3>
+                        Water Bodies
+                    </h3>
+
+                    <p>
+                        Supports water-resource planning,
+                        environmental protection and
+                        sustainable development.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===============================
+         STATE-WISE LAND DATA
+         =============================== -->
+
+    <section class="state-data-section">
+
+        <div class="state-data-container">
+
+            <h2>
+                State-wise Land Data
+            </h2>
+
+            <p class="state-data-description">
+                Explore land governance information
+                across selected Indian states.
+            </p>
+
+
+            <div class="state-data-grid">
+
+
+                <div class="state-data-card">
+
+                    <h3>
+                        Andhra Pradesh
+                    </h3>
+
+                    <p>
+                        <strong>Focus:</strong>
+                        Agricultural and coastal land management
+                    </p>
+
+                    <p>
+                        <strong>Research:</strong>
+                        Rural development and land-use planning
+                    </p>
+
+                </div>
+
+
+                <div class="state-data-card">
+
+                    <h3>
+                        Telangana
+                    </h3>
+
+                    <p>
+                        <strong>Focus:</strong>
+                        Agricultural and urban land planning
+                    </p>
+
+                    <p>
+                        <strong>Research:</strong>
+                        Urban growth and land-use management
+                    </p>
+
+                </div>
+
+
+                <div class="state-data-card">
+
+                    <h3>
+                        Karnataka
+                    </h3>
+
+                    <p>
+                        <strong>Focus:</strong>
+                        Agricultural and urban development
+                    </p>
+
+                    <p>
+                        <strong>Research:</strong>
+                        Sustainable land management
+                    </p>
+
+                </div>
+
+
+                <div class="state-data-card">
+
+                    <h3>
+                        Tamil Nadu
+                    </h3>
+
+                    <p>
+                        <strong>Focus:</strong>
+                        Urban and agricultural land
+                    </p>
+
+                    <p>
+                        <strong>Research:</strong>
+                        Regional planning and sustainability
+                    </p>
+
+                </div>
+
+
+                <div class="state-data-card">
+
+                    <h3>
+                        Kerala
+                    </h3>
+
+                    <p>
+                        <strong>Focus:</strong>
+                        Ecological and urban land management
+                    </p>
+
+                    <p>
+                        <strong>Research:</strong>
+                        Environmental conservation
+                    </p>
+
+                </div>
+
+
+                <div class="state-data-card">
+
+                    <h3>
+                        Maharashtra
+                    </h3>
+
+                    <p>
+                        <strong>Focus:</strong>
+                        Urban and agricultural land
+                    </p>
+
+                    <p>
+                        <strong>Research:</strong>
+                        Urban planning and development
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===============================
+         DATA SOURCES & EVIDENCE
+         =============================== -->
+
+    <section class="data-sources-section">
+
+        <div class="data-sources-container">
+
+            <h2>
+                Data Sources & Evidence
+            </h2>
+
+            <p class="data-sources-description">
+                The platform brings together spatial data,
+                research evidence and policy information
+                to support informed land governance.
+            </p>
+
+
+            <div class="data-sources-grid">
+
+
+                <div class="data-source-card">
+
+                    <div class="data-source-icon">
+                        🗺️
+                    </div>
+
+                    <h3>
+                        Spatial Data
+                    </h3>
+
+                    <p>
+                        Geospatial information can support
+                        land-use mapping, planning and
+                        location-based analysis.
+                    </p>
+
+                </div>
+
+
+                <div class="data-source-card">
+
+                    <div class="data-source-icon">
+                        📚
+                    </div>
+
+                    <h3>
+                        Research Evidence
+                    </h3>
+
+                    <p>
+                        Research studies and evidence can
+                        help identify land-use trends,
+                        challenges and opportunities.
+                    </p>
+
+                </div>
+
+
+                <div class="data-source-card">
+
+                    <div class="data-source-icon">
+                        📋
+                    </div>
+
+                    <h3>
+                        Policy Information
+                    </h3>
+
+                    <p>
+                        Policy frameworks and governance
+                        information can support transparent
+                        decision-making.
+                    </p>
+
+                </div>
+
+
+                <div class="data-source-card">
+
+                    <div class="data-source-icon">
+                        💬
+                    </div>
+
+                    <h3>
+                        Community Feedback
+                    </h3>
+
+                    <p>
+                        Feedback from stakeholders can help
+                        identify local needs and improve
+                        policy innovation.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===============================
+         HOW THE PLATFORM WORKS
+         =============================== -->
+
+    <section class="platform-process-section">
+
+        <div class="platform-process-container">
+
+            <h2>
+                How the Platform Works
+            </h2>
+
+            <p class="platform-process-description">
+                A simple evidence-based workflow for
+                better land governance and policy innovation.
+            </p>
+
+
+            <div class="process-grid">
+
+
+                <div class="process-card">
+
+                    <div class="process-number">
+                        01
+                    </div>
+
+                    <h3>
+                        Collect Data
+                    </h3>
+
+                    <p>
+                        Gather spatial data, land-use information,
+                        research evidence and stakeholder feedback.
+                    </p>
+
+                </div>
+
+
+                <div class="process-card">
+
+                    <div class="process-number">
+                        02
+                    </div>
+
+                    <h3>
+                        Analyze Evidence
+                    </h3>
+
+                    <p>
+                        Analyze land-use patterns and research
+                        evidence to identify important trends
+                        and governance challenges.
+                    </p>
+
+                </div>
+
+
+                <div class="process-card">
+
+                    <div class="process-number">
+                        03
+                    </div>
+
+                    <h3>
+                        Develop Policy
+                    </h3>
+
+                    <p>
+                        Use evidence and analysis to support
+                        transparent and informed policy decisions.
+                    </p>
+
+                </div>
+
+
+                <div class="process-card">
+
+                    <div class="process-number">
+                        04
+                    </div>
+
+                    <h3>
+                        Measure Impact
+                    </h3>
+
+                    <p>
+                        Monitor outcomes and use feedback to
+                        improve land governance strategies.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===============================
+         ANALYTICS
+         =============================== -->
+
+    <section class="analytics-section">
+
+        <div class="analytics-container">
+
+            <h2>
+                Land-use Analytics
+            </h2>
+
+            <div class="chart-card">
+
+                <h3>
+                    Land-use Distribution
+                </h3>
+
+                <canvas id="landUseChart"></canvas>
+
+                <p>
+                    Prototype/demo visualization for
+                    interface demonstration only.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===============================
+         CALL TO ACTION
+         =============================== -->
+
+    <section class="dashboard-cta">
+
+        <div class="dashboard-cta-container">
+
+            <h2>
+                Turn Evidence into Better Land Governance
+            </h2>
+
+            <p>
+                Explore research, discover policy ideas,
+                and share feedback to support informed
+                land-use decisions.
+            </p>
+
+            <div class="cta-buttons">
+
+                <a href="research.html"
+                    class="cta-btn">
+                    Explore Research
+                </a>
+
+                <a href="policy.html"
+                    class="cta-btn">
+                    Explore Policy
+                </a>
+
+                <a href="feedback.html"
+                    class="cta-btn">
+                    Share Feedback
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===============================
+         FOOTER
+         =============================== -->
+
+    <footer class="footer">
+
+        <p>
+            © 2026 National Digital Platform
+            for Land Governance
+        </p>
+
+    </footer>
+
+
+    <!-- ===============================
+         JAVASCRIPT LIBRARIES
+         =============================== -->
+
+    <!-- Leaflet JS -->
+
+    <script
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+    </script>
+
+
+    <!-- Chart.js -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/chart.js">
+    </script>
+
+
+    <!-- Main JavaScript -->
+
+    <script src="js/script.js"></script>
+
+
+</body>
+
+</html>
